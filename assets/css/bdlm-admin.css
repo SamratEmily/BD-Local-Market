@@ -1,0 +1,400 @@
+/**
+ * BD Local Market — Admin Settings Stylesheet
+ * Covers: Settings API tabbed page, branded header, shortcode reference.
+ *
+ * @package BD_Local_Market
+ */
+
+/* ==========================================================================
+   Wrap
+   ========================================================================== */
+.bdlm-admin-settings {
+	max-width: 1100px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Branded Header
+   ========================================================================== */
+.bdlm-admin-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: linear-gradient(135deg, #003D20 0%, #00622E 55%, #00A651 100%);
+	color: white;
+	padding: 1.4rem 2rem;
+	border-radius: 10px;
+	margin-bottom: 0;
+}
+
+.bdlm-admin-logo {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: 2rem;
+}
+
+.bdlm-admin-logo > div h1 {
+	margin: 0;
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: #fff;
+	line-height: 1.2;
+}
+
+.bdlm-admin-logo > div p {
+	margin: 0;
+	font-size: 0.82rem;
+	opacity: 0.8;
+	color: #fff;
+}
+
+.bdlm-version-badge {
+	background: rgba(255, 255, 255, 0.18);
+	color: #fff;
+	padding: 0.3rem 0.8rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	white-space: nowrap;
+}
+
+/* ==========================================================================
+   Tab Navigation
+   ========================================================================== */
+.bdlm-tab-nav {
+	display: flex;
+	gap: 0;
+	margin: 0 !important;
+	padding: 0 0 0 1px;
+	border-bottom: 1px solid #c3c4c7 !important;
+	background: #f6f7f7;
+	border-radius: 0;
+}
+
+.bdlm-tab-nav .nav-tab {
+	margin-bottom: -1px !important;
+	border-radius: 4px 4px 0 0 !important;
+	border: 1px solid #c3c4c7 !important;
+	border-bottom: none !important;
+	background: #f6f7f7;
+	color: #50575e;
+	font-size: 0.88rem;
+	font-weight: 600;
+	padding: 0.55rem 1.1rem;
+	transition: background 0.15s, color 0.15s;
+}
+
+.bdlm-tab-nav .nav-tab:hover {
+	background: #fff;
+	color: #00622E;
+}
+
+.bdlm-tab-nav .nav-tab-active {
+	background: #fff !important;
+	color: #00622E !important;
+	border-bottom-color: #fff !important;
+}
+
+/* ==========================================================================
+   Settings Body
+   ========================================================================== */
+.bdlm-settings-body {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-top: none;
+	padding: 1.75rem 2rem;
+	border-radius: 0 0 8px 8px;
+	margin-bottom: 1.5rem;
+}
+
+/* WP Settings API table tweaks */
+.bdlm-settings-body .form-table th {
+	width: 220px;
+	font-size: 0.875rem;
+	color: #1d2327;
+}
+
+.bdlm-settings-body .form-table td p.description {
+	margin-top: 0.4rem;
+	color: #646970;
+	font-size: 0.82rem;
+}
+
+/* Section headings */
+.bdlm-settings-body h2 {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #1d2327;
+	border-bottom: 2px solid #00A651;
+	padding-bottom: 0.4rem;
+	margin-top: 2rem;
+}
+
+.bdlm-settings-body h2:first-child {
+	margin-top: 0;
+}
+
+/* Save button */
+#bdlm-save-btn.button-primary {
+	background: #00A651 !important;
+	border-color: #007A3C !important;
+	color: #fff !important;
+	padding: 0.55rem 2rem !important;
+	font-size: 0.95rem !important;
+	font-weight: 700 !important;
+	height: auto !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 6px rgba(0, 166, 81, 0.3) !important;
+}
+
+#bdlm-save-btn.button-primary:hover {
+	background: #007A3C !important;
+}
+
+/* ==========================================================================
+   Shortcode Reference (collapsible <details>)
+   ========================================================================== */
+.bdlm-shortcode-reference {
+	background: #f6f7f7;
+	border: 1px solid #c3c4c7;
+	border-radius: 8px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.bdlm-shortcode-reference summary {
+	padding: 0.85rem 1.25rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #1d2327;
+	cursor: pointer;
+	user-select: none;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.bdlm-shortcode-reference summary::-webkit-details-marker { display: none; }
+.bdlm-shortcode-reference summary::before {
+	content: '▶';
+	font-size: 0.65rem;
+	transition: transform 0.2s;
+}
+.bdlm-shortcode-reference[open] summary::before {
+	transform: rotate(90deg);
+}
+
+.bdlm-shortcode-reference table {
+	margin: 0;
+	border-top: 1px solid #c3c4c7;
+}
+
+.bdlm-shortcode-reference th {
+	background: #f0f0f1;
+	font-size: 0.82rem;
+	font-weight: 700;
+}
+
+.bdlm-shortcode-reference td code {
+	background: #e8f7ee;
+	color: #00622E;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 900px) {
+	.bdlm-admin-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+	.bdlm-settings-body { padding: 1.25rem; }
+	.bdlm-settings-body .form-table th { width: auto; display: block; padding-bottom: 0.25rem; }
+	.bdlm-settings-body .form-table td { display: block; }
+	.bdlm-tab-nav { flex-wrap: wrap; }
+}
+
+/* ==========================================================================
+   Admin Header
+   ========================================================================== */
+.bdlm-admin-wrap {
+	max-width: 1100px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.bdlm-admin-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: linear-gradient(135deg, #003D20 0%, #00622E 60%, #00A651 100%);
+	color: white;
+	padding: 1.5rem 2rem;
+	border-radius: 12px 12px 0 0;
+	margin-bottom: 0;
+}
+
+.bdlm-admin-logo {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.bdlm-admin-logo-icon {
+	font-size: 2.2rem;
+}
+
+.bdlm-admin-header h1 {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: white;
+	line-height: 1.2;
+}
+
+.bdlm-admin-header p {
+	margin: 0;
+	font-size: 0.85rem;
+	opacity: 0.8;
+}
+
+.bdlm-version-badge {
+	background: rgba(255,255,255,0.2);
+	color: white;
+	padding: 0.35rem 0.85rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ==========================================================================
+   Settings Grid
+   ========================================================================== */
+.bdlm-settings-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.25rem;
+	margin-top: 1.5rem;
+}
+
+.bdlm-settings-card {
+	background: white;
+	border-radius: 10px;
+	border: 1px solid #e0e6e0;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bdlm-settings-card--info {
+	grid-column: 1 / -1;
+}
+
+.bdlm-settings-card-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1rem 1.25rem;
+	background: #f5f8f5;
+	border-bottom: 1px solid #e0e6e0;
+}
+
+.bdlm-settings-icon {
+	font-size: 1.3rem;
+}
+
+.bdlm-settings-card-header h2 {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #1A2B1A;
+}
+
+.bdlm-settings-card-body {
+	padding: 1.25rem;
+}
+
+.bdlm-settings-card-body .form-table th {
+	padding-left: 0;
+	font-size: 0.875rem;
+	width: 200px;
+}
+
+.bdlm-settings-card-body .form-table td {
+	padding-left: 0;
+}
+
+.bdlm-shortcode-hint {
+	background: #e8f7ee;
+	border-left: 3px solid #00A651;
+	padding: 0.6rem 0.85rem;
+	border-radius: 0 6px 6px 0;
+	margin-bottom: 1rem;
+	font-size: 0.85rem;
+	color: #2a5a2a;
+}
+
+/* ==========================================================================
+   Shortcode Reference Table
+   ========================================================================== */
+.bdlm-shortcode-table {
+	border-radius: 8px;
+	overflow: hidden;
+	font-size: 0.875rem;
+}
+
+.bdlm-shortcode-table thead tr {
+	background: #f5f8f5;
+}
+
+.bdlm-shortcode-table thead th {
+	font-weight: 700;
+	padding: 0.6rem 0.85rem;
+	color: #1A2B1A;
+}
+
+.bdlm-shortcode-table tbody td {
+	padding: 0.6rem 0.85rem;
+	vertical-align: middle;
+}
+
+.bdlm-shortcode-table tbody tr:hover {
+	background: #f5f8f5;
+}
+
+/* ==========================================================================
+   Save Button
+   ========================================================================== */
+.bdlm-settings-footer {
+	margin-top: 1.5rem;
+	padding: 1.25rem 0;
+	border-top: 1px solid #e0e6e0;
+}
+
+.bdlm-save-btn.button-primary {
+	background: #00A651 !important;
+	border-color: #00833F !important;
+	color: white !important;
+	padding: 0.6rem 1.8rem !important;
+	font-size: 0.95rem !important;
+	font-weight: 700 !important;
+	height: auto !important;
+	border-radius: 6px !important;
+}
+
+.bdlm-save-btn.button-primary:hover {
+	background: #00833F !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+	.bdlm-settings-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.bdlm-settings-card--info {
+		grid-column: 1;
+	}
+}

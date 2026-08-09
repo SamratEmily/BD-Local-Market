@@ -1,0 +1,103 @@
+# Copyright (C) 2024 BD Local Market
+# This file is distributed under the same license as the BD Local Market plugin.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BD Local Market 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/samrathossen/bd-local-market/issues\n"
+"POT-Creation-Date: 2024-01-01 00:00+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Bengali <bn@li.org>\n"
+"Language: bn_BD\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: BD Local Market\n"
+"X-Domain: bd-local-market\n"
+
+#. Plugin Name.
+msgid "BD Local Market"
+msgstr "BD লোকাল মার্কেট"
+
+#. Plugin Description.
+msgid "A production-ready Bangladeshi grocery/supermarket-style WooCommerce enhancement plugin."
+msgstr "বাংলাদেশী গ্রোসারি/সুপারশপ স্টাইল WooCommerce উন্নতি প্লাগইন।"
+
+msgid "Add to Bag"
+msgstr "ব্যাগে যোগ করুন"
+
+msgid "Recommended For You"
+msgstr "আপনার জন্য সুপারিশকৃত"
+
+msgid "Today's Best Deals"
+msgstr "আজকের সেরা ডিল"
+
+msgid "Hot & Trending 🔥"
+msgstr "হট ও ট্রেন্ডিং 🔥"
+
+msgid "Featured Finds ✨"
+msgstr "বিশেষ পণ্য ✨"
+
+msgid "Shop by Category"
+msgstr "ক্যাটাগরি অনুযায়ী কেনাকাটা"
+
+msgid "Shop by Brand"
+msgstr "ব্র্যান্ড অনুযায়ী কেনাকাটা"
+
+msgid "Fresh Groceries, Delivered Fast"
+msgstr "তাজা মুদিখানা, দ্রুত ডেলিভারি"
+
+msgid "Shop Now"
+msgstr "এখনই কেনাকাটা করুন"
+
+msgid "2-4 hrs delivery"
+msgstr "২-৪ ঘণ্টায় ডেলিভারি"
+
+msgid "Quick Checkout!"
+msgstr "দ্রুত চেকআউট!"
+
+msgid "No account needed — just your name and phone number. Your address is optional."
+msgstr "কোনো অ্যাকাউন্টের প্রয়োজন নেই — শুধু আপনার নাম এবং ফোন নম্বর দিন। ঠিকানা ঐচ্ছিক।"
+
+msgid "Please enter your name."
+msgstr "অনুগ্রহ করে আপনার নাম লিখুন।"
+
+msgid "Please enter your phone number."
+msgstr "অনুগ্রহ করে আপনার ফোন নম্বর লিখুন।"
+
+msgid "Please enter a valid Bangladeshi mobile number (e.g. 01712345678 or +8801712345678)."
+msgstr "অনুগ্রহ করে একটি বৈধ বাংলাদেশী মোবাইল নম্বর লিখুন (যেমন: ০১৭১২৩৪৫৬৭৮)।"
+
+msgid "Ends in:"
+msgstr "শেষ হবে:"
+
+msgid "HRS"
+msgstr "ঘণ্টা"
+
+msgid "MIN"
+msgstr "মিনিট"
+
+msgid "SEC"
+msgstr "সেকেন্ড"
+
+msgid "Search for groceries, vegetables, fruits..."
+msgstr "মুদিখানা, সবজি, ফল খুঁজুন..."
+
+msgid "No products found."
+msgstr "কোনো পণ্য পাওয়া যায়নি।"
+
+msgid "View all results →"
+msgstr "সব ফলাফল দেখুন →"
+
+msgid "BD Local Market Settings saved."
+msgstr "BD লোকাল মার্কেট সেটিংস সংরক্ষিত।"
+
+#: %d item
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d টি আইটেম"
+msgstr[1] "%d টি আইটেম"

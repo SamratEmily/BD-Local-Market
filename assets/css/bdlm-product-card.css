@@ -1,0 +1,562 @@
+/**
+ * BD Local Market — Product Card & Grid CSS
+ * Shwapno-inspired design. Astra-compatible.
+ *
+ * Table of Contents:
+ * 1.  Card Base
+ * 2.  Image Area
+ * 3.  Discount Badge
+ * 4.  Card Body (category, title, unit, min-qty, price)
+ * 5.  Price Block
+ * 6.  Delivery Badge
+ * 7.  Add to Bag Button
+ * 8.  Out of Stock State
+ * 9.  Grid Layout (bd_product_grid shortcode)
+ * 10. WC Native Loop Integration
+ * 11. Single Product Meta
+ * 12. Responsive
+ *
+ * @package BD_Local_Market
+ */
+
+/* ==========================================================================
+   1. CARD BASE
+   ========================================================================== */
+.bdlm-product-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	border-radius: 10px;
+	border: 1.5px solid #e8ede8;
+	overflow: hidden;
+	transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+	height: 100%;
+	font-family: 'Hind Siliguri', -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bdlm-product-card:hover {
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+	border-color: #00A651;
+	transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   2. IMAGE AREA
+   ========================================================================== */
+.bdlm-product-card__image-wrap {
+	position: relative;
+	background: #f5f8f5;
+	overflow: hidden;
+	aspect-ratio: 1 / 1;
+	flex-shrink: 0;
+}
+
+.bdlm-product-card__image-link {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.bdlm-product-card__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.35s ease;
+}
+
+.bdlm-product-card:hover .bdlm-product-card__image {
+	transform: scale(1.05);
+}
+
+/* ==========================================================================
+   3. DISCOUNT BADGE
+   ========================================================================== */
+.bdlm-discount-badge {
+	position: absolute;
+	z-index: 4;
+	font-size: 0.7rem;
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	pointer-events: none;
+	user-select: none;
+}
+
+/* Percent badge — top-left corner */
+.bdlm-discount-badge--percent {
+	top: 10px;
+	left: 10px;
+	background: #E6392B;
+	color: #ffffff;
+}
+
+/* Taka badge — top-left corner, wider */
+.bdlm-discount-badge--taka {
+	top: 10px;
+	left: 10px;
+	background: #FF6200;
+	color: #ffffff;
+}
+
+/* --- Shape variants --- */
+.bdlm-discount-badge--pill {
+	padding: 4px 9px;
+	border-radius: 999px;
+}
+
+.bdlm-discount-badge--square {
+	padding: 5px 8px;
+	border-radius: 3px;
+}
+
+.bdlm-discount-badge--ribbon {
+	top: 0;
+	left: 0;
+	padding: 6px 10px 6px 8px;
+	border-radius: 0 0 8px 0;
+	clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+	font-size: 0.68rem;
+}
+
+/* Out-of-stock overlay */
+.bdlm-out-of-stock-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(255, 255, 255, 0.72);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #6B7C6B;
+	z-index: 3;
+	backdrop-filter: blur(2px);
+}
+
+/* ==========================================================================
+   4. CARD BODY
+   ========================================================================== */
+.bdlm-product-card__body {
+	padding: 10px 12px 8px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.bdlm-product-card__category {
+	font-size: 0.68rem;
+	font-weight: 600;
+	color: #00A651;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	line-height: 1;
+}
+
+.bdlm-product-card__title {
+	margin: 2px 0 0;
+	font-size: 0.9rem;
+	font-weight: 600;
+	line-height: 1.35;
+	color: #1A2B1A;
+
+	/* 2-line clamp */
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	min-height: calc(0.9rem * 1.35 * 2);
+}
+
+.bdlm-product-card__title-link {
+	text-decoration: none;
+	color: inherit;
+}
+
+.bdlm-product-card__title-link:hover {
+	color: #00A651;
+}
+
+.bdlm-product-card__unit {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: #6B7C6B;
+	line-height: 1;
+}
+
+.bdlm-product-card__min-qty {
+	font-size: 0.7rem;
+	color: #FF6200;
+	font-weight: 600;
+	background: #FFF4EE;
+	border-radius: 3px;
+	padding: 1px 5px;
+	width: fit-content;
+}
+
+/* ==========================================================================
+   5. PRICE BLOCK
+   ========================================================================== */
+.bdlm-product-card__price-wrap {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex-wrap: wrap;
+	margin-top: 4px;
+}
+
+.bdlm-product-card__sale-price {
+	font-size: 1.05rem;
+	font-weight: 800;
+	color: #00622E;
+	line-height: 1;
+}
+
+.bdlm-product-card__regular-price {
+	font-size: 0.8rem;
+	font-weight: 400;
+	color: #9eaA9e;
+	line-height: 1;
+}
+
+.bdlm-product-card__regular-price del {
+	text-decoration: line-through;
+	text-decoration-color: #c8cfc8;
+}
+
+/* ==========================================================================
+   6. DELIVERY BADGE
+   ========================================================================== */
+.bdlm-product-card__delivery {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 0.68rem;
+	font-weight: 600;
+	color: #00622E;
+	background: #e8f7ee;
+	border-radius: 999px;
+	padding: 3px 8px;
+	width: fit-content;
+	margin-top: 4px;
+}
+
+.bdlm-product-card__delivery-icon {
+	font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   7. ADD TO BAG BUTTON
+   ========================================================================== */
+.bdlm-product-card__footer {
+	padding: 8px 10px 10px;
+	margin-top: auto;
+}
+
+.bdlm-add-to-bag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	width: 100%;
+	padding: 9px 12px;
+	background: #00A651;
+	color: #ffffff !important;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.15s ease;
+	text-align: center;
+	line-height: 1.2;
+	position: relative;
+	overflow: hidden;
+}
+
+.bdlm-add-to-bag::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(255, 255, 255, 0);
+	transition: background 0.2s ease;
+}
+
+.bdlm-add-to-bag:hover {
+	background: #007A3C;
+	color: #ffffff !important;
+	transform: translateY(-1px);
+}
+
+.bdlm-add-to-bag:hover::before {
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.bdlm-add-to-bag:active {
+	transform: translateY(0);
+	background: #005C2E;
+}
+
+.bdlm-add-to-bag__icon {
+	font-size: 1rem;
+	line-height: 1;
+}
+
+/* Adding state */
+.bdlm-add-to-bag.bdlm-adding {
+	background: #6B7C6B;
+	pointer-events: none;
+}
+
+/* Added & Go to Cart state */
+.bdlm-add-to-bag.bdlm-added,
+.bdlm-add-to-bag.bdlm-go-to-cart {
+	background: #FF6200 !important;
+	color: #ffffff !important;
+	animation: bdlm-bounce 0.3s ease;
+}
+
+.bdlm-add-to-bag.bdlm-go-to-cart:hover {
+	background: #E05600 !important;
+}
+
+/* Select options variant */
+.bdlm-add-to-bag--select {
+	background: transparent;
+	color: #00A651 !important;
+	border: 2px solid #00A651;
+}
+
+.bdlm-add-to-bag--select:hover {
+	background: #00A651;
+	color: #ffffff !important;
+}
+
+/* Disabled / Out of stock */
+.bdlm-add-to-bag--disabled {
+	background: #e8ede8;
+	color: #9eaa9e !important;
+	cursor: not-allowed;
+	font-size: 0.82rem;
+}
+
+.bdlm-add-to-bag--disabled:hover {
+	background: #e8ede8;
+	transform: none;
+}
+
+/* ==========================================================================
+   8. OUT-OF-STOCK CARD STATE
+   ========================================================================== */
+.bdlm-product-card--out-of-stock {
+	opacity: 0.8;
+}
+
+.bdlm-product-card--out-of-stock .bdlm-product-card__title-link {
+	color: #9eaa9e;
+}
+
+/* ==========================================================================
+   9. GRID LAYOUT ([bd_product_grid] shortcode)
+   ========================================================================== */
+.bdlm-product-grid-wrap {
+	margin: 0 0 2rem;
+}
+
+.bdlm-product-grid {
+	display: grid;
+	gap: 16px;
+}
+
+/* Column count classes */
+.bdlm-product-grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.bdlm-product-grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.bdlm-product-grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+.bdlm-product-grid--cols-5 { grid-template-columns: repeat(5, 1fr); }
+.bdlm-product-grid--cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+.bdlm-product-grid__item {
+	/* Ensures the card stretches to fill the grid cell */
+	display: flex;
+}
+
+.bdlm-product-grid__item .bdlm-product-card {
+	width: 100%;
+}
+
+/* ==========================================================================
+   10. WC NATIVE LOOP INTEGRATION
+   Targets the standard <li.product> wrapper on shop/category pages.
+   ========================================================================== */
+
+/* Remove WC's default li.product padding/margins that clash */
+.woocommerce ul.products li.product:has(.bdlm-product-card),
+.woocommerce-page ul.products li.product:has(.bdlm-product-card) {
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Make the li a flex container so our card fills it 100% height */
+.woocommerce ul.products li.product {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.woocommerce ul.products li.product .bdlm-product-card {
+	flex: 1;
+	height: 100%;
+}
+
+/* --- SUPPRESS DUPLICATE THEME / WC ELEMENTS --- */
+/* Hide default Sale! badge overlay completely across all WooCommerce and Astra elements */
+.onsale,
+span.onsale,
+div.onsale,
+.ast-onsale-card,
+.ast-onsale-badge,
+.ast-woo-sale-flash,
+.woocommerce span.onsale,
+.woocommerce-page span.onsale,
+.woocommerce ul.products li.product .onsale,
+.woocommerce ul.products li.product span.onsale,
+ul.products li.product > .onsale,
+ul.products li.product > span.onsale,
+ul.products li.product .onsale {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	overflow: hidden !important;
+}
+
+/* Hide duplicate elements output by WooCommerce or theme below our card container */
+ul.products li.product > a.woocommerce-LoopProduct-link,
+ul.products li.product > a.button,
+ul.products li.product > span.price,
+ul.products li.product > h2.woocommerce-loop-product__title,
+ul.products li.product > span.ast-woo-product-category,
+ul.products li.product > .ast-woo-shop-product-description,
+.bdlm-product-grid__item > a.button,
+.bdlm-product-grid__item > span.price,
+.bdlm-product-grid__item > .woocommerce-loop-product__title {
+	display: none !important;
+}
+
+/* ==========================================================================
+   11. SINGLE PRODUCT META (unit, min-qty, delivery)
+   ========================================================================== */
+.bdlm-single-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0.5rem 0 1rem;
+}
+
+.bdlm-single-meta__unit {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #6B7C6B;
+	background: #f5f8f5;
+	padding: 4px 10px;
+	border-radius: 999px;
+	border: 1px solid #e8ede8;
+}
+
+.bdlm-single-meta__min-qty {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #FF6200;
+	background: #FFF4EE;
+	padding: 4px 10px;
+	border-radius: 999px;
+	border: 1px solid #ffe0cc;
+}
+
+.bdlm-single-meta__delivery {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #00622E;
+	background: #e8f7ee;
+	padding: 4px 10px;
+	border-radius: 999px;
+	border: 1px solid #c3e8d0;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE
+   ========================================================================== */
+
+/* Tablet: 5-col → 3, 4-col → 3 */
+@media (max-width: 1024px) {
+	.bdlm-product-grid--cols-5,
+	.bdlm-product-grid--cols-6 { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+	.bdlm-product-grid--cols-4,
+	.bdlm-product-grid--cols-5,
+	.bdlm-product-grid--cols-6 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Phablet: everything → 2 columns */
+@media (max-width: 640px) {
+	.bdlm-product-grid--cols-2,
+	.bdlm-product-grid--cols-3,
+	.bdlm-product-grid--cols-4,
+	.bdlm-product-grid--cols-5,
+	.bdlm-product-grid--cols-6 {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+
+	.bdlm-product-card__title {
+		font-size: 0.82rem;
+	}
+
+	.bdlm-product-card__sale-price {
+		font-size: 0.95rem;
+	}
+
+	.bdlm-add-to-bag {
+		font-size: 0.78rem;
+		padding: 8px 8px;
+	}
+
+	.bdlm-product-card__body {
+		padding: 8px 8px 6px;
+	}
+
+	.bdlm-product-card__footer {
+		padding: 6px 8px 8px;
+	}
+}
+
+/* Small mobile: tighten further */
+@media (max-width: 380px) {
+	.bdlm-product-grid {
+		gap: 8px;
+	}
+
+	.bdlm-product-card__title {
+		font-size: 0.78rem;
+	}
+
+	.bdlm-discount-badge--pill,
+	.bdlm-discount-badge--square {
+		font-size: 0.62rem;
+		padding: 3px 6px;
+	}
+}

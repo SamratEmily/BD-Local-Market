@@ -1,0 +1,1650 @@
+/**
+ * BD Local Market — Frontend Stylesheet
+ * Complements the Astra Child theme without overriding it.
+ *
+ * Table of Contents:
+ * 1. Design Tokens
+ * 2. Section Layout & Headers
+ * 3. Hero Banner
+ * 4. Category Grid
+ * 5. Product Card Enhancements (badges, unit info)
+ * 6. Product Scroll Row
+ * 7. Flash Deals & Countdown
+ * 8. Live Search Dropdown
+ * 9. Guest Checkout Notice & Fields
+ * 10. Category Archive Enhancements
+ * 11. Mobile Bottom Navigation
+ * 12. Free Shipping Bar
+ * 13. Badge Style Variants
+ * 14. Utility & Animations
+ */
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+	--bdlm-green:        #00A651;
+	--bdlm-green-dark:   #00833F;
+	--bdlm-green-light:  #E8F7EE;
+	--bdlm-orange:       #FF6200;
+	--bdlm-red:          #E6392B;
+	--bdlm-gold:         #FFC107;
+	--bdlm-dark:         #0F1B0F;
+	--bdlm-text:         #1A2B1A;
+	--bdlm-muted:        #6B7C6B;
+	--bdlm-border:       #E4EDE4;
+	--bdlm-bg:           #F5F8F5;
+	--bdlm-white:        #FFFFFF;
+
+	--bdlm-radius-sm:    6px;
+	--bdlm-radius:       10px;
+	--bdlm-radius-lg:    16px;
+	--bdlm-radius-pill:  999px;
+
+	--bdlm-shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+	--bdlm-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
+	--bdlm-shadow-lg:    0 10px 40px rgba(0, 0, 0, 0.12);
+
+	--bdlm-transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	--bdlm-font:         'Hind Siliguri', -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* ==========================================================================
+   2. SECTION LAYOUT & HEADERS
+   ========================================================================== */
+.bdlm-section {
+	margin: 2.5rem 0;
+	padding: 0 0.5rem;
+}
+
+.bdlm-section-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.25rem;
+	gap: 1rem;
+}
+
+.bdlm-section-title {
+	font-family: var(--bdlm-font);
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: var(--bdlm-text);
+	margin: 0;
+	padding-left: 0.75rem;
+	border-left: 4px solid var(--bdlm-green);
+	line-height: 1.3;
+}
+
+.bdlm-section-title--light {
+	color: var(--bdlm-white);
+	border-left-color: var(--bdlm-gold);
+}
+
+.bdlm-section-icon {
+	margin-right: 0.35rem;
+}
+
+.bdlm-section-link {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--bdlm-green);
+	text-decoration: none;
+	white-space: nowrap;
+	transition: var(--bdlm-transition);
+}
+
+.bdlm-section-link:hover {
+	color: var(--bdlm-green-dark);
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. SHWAPNO-STYLE HERO LAYOUT
+   ========================================================================== */
+.bdlm-shwapno-hero-wrapper {
+	margin: 1rem 0 2.5rem;
+	font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.bdlm-shwapno-hero-main {
+	display: grid;
+	grid-template-columns: 240px 1fr;
+	gap: 1.25rem;
+	align-items: stretch;
+}
+
+/* --- 1. LEFT SIDEBAR CATEGORIES --- */
+.bdlm-shwapno-sidebar {
+	background: #ffffff;
+	border: 1px solid #e0e6e0;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+	display: flex;
+	flex-direction: column;
+}
+
+.bdlm-shwapno-sidebar__header {
+	background: #ffffff;
+	border-bottom: 2px solid #e0e6e0;
+	padding: 0.85rem 1rem;
+	font-size: 0.85rem;
+	font-weight: 800;
+	color: #1A2B1A;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	letter-spacing: 0.04em;
+}
+
+.bdlm-shwapno-sidebar__menu-icon {
+	font-size: 1.1rem;
+	color: #DF0000;
+}
+
+.bdlm-shwapno-sidebar__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	flex: 1;
+}
+
+.bdlm-shwapno-sidebar__item {
+	border-bottom: 1px solid #f2f5f2;
+}
+
+.bdlm-shwapno-sidebar__item:last-child {
+	border-bottom: none;
+}
+
+.bdlm-shwapno-sidebar__link {
+	display: flex;
+	align-items: center;
+	padding: 0.55rem 0.9rem;
+	text-decoration: none !important;
+	color: #2c3e2c;
+	font-size: 0.88rem;
+	font-weight: 600;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.bdlm-shwapno-sidebar__link:hover {
+	background: #fff5f5;
+	color: #DF0000;
+}
+
+.bdlm-shwapno-sidebar__icon {
+	font-size: 1.05rem;
+	width: 26px;
+	flex-shrink: 0;
+}
+
+.bdlm-shwapno-sidebar__name {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bdlm-shwapno-sidebar__arrow {
+	font-size: 1rem;
+	color: #b0beb0;
+	font-weight: 400;
+	transition: transform 0.15s ease;
+}
+
+.bdlm-shwapno-sidebar__link:hover .bdlm-shwapno-sidebar__arrow {
+	color: #DF0000;
+	transform: translateX(2px);
+}
+
+/* --- 2. RIGHT COLUMN CONTENT --- */
+.bdlm-shwapno-content-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* MAIN PROMO BANNER */
+.bdlm-shwapno-banner {
+	position: relative;
+	background: linear-gradient(135deg, #003366 0%, #0055a5 40%, #d32f2f 70%, #DF0000 100%);
+	border-radius: 8px;
+	min-height: 220px;
+	overflow: hidden;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.bdlm-shwapno-banner__slide {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 1.5rem 3rem;
+}
+
+.bdlm-shwapno-banner__visuals {
+	display: flex;
+	align-items: center;
+}
+
+.bdlm-shwapno-banner__products-showcase {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 3.5rem;
+	filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+
+.bdlm-banner-prod-item {
+	display: inline-block;
+	animation: bdlm-float 4s ease-in-out infinite alternate;
+}
+
+.bdlm-banner-prod-item.bdlm-prod-2 { animation-delay: 0.5s; }
+.bdlm-banner-prod-item.bdlm-prod-3 { animation-delay: 1s; }
+.bdlm-banner-prod-item.bdlm-prod-4 { animation-delay: 1.5s; }
+
+.bdlm-shwapno-banner__promo-badge {
+	text-align: right;
+}
+
+.bdlm-shwapno-banner__promo-badge h2 {
+	margin: 0;
+	font-size: 1.6rem;
+	font-weight: 800;
+	color: #ffffff;
+	line-height: 1.2;
+}
+
+.bdlm-shwapno-banner__promo-badge p {
+	margin: 0.25rem 0 0.6rem;
+	font-size: 0.9rem;
+	opacity: 0.9;
+}
+
+.bdlm-shwapno-banner__discount-text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-bottom: 0.75rem;
+}
+
+.bdlm-shwapno-banner__discount-text span {
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.bdlm-shwapno-banner__discount-text strong {
+	font-size: 2.8rem;
+	font-weight: 900;
+	color: #FFEB3B;
+	line-height: 1;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.bdlm-shwapno-banner__cta-btn {
+	display: inline-block;
+	background: #FFEB3B;
+	color: #1A2B1A !important;
+	font-weight: 800;
+	padding: 0.5rem 1.4rem;
+	border-radius: 999px;
+	text-decoration: none !important;
+	font-size: 0.9rem;
+	transition: transform 0.15s ease, background 0.15s ease;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.bdlm-shwapno-banner__cta-btn:hover {
+	background: #ffffff;
+	transform: scale(1.04);
+}
+
+/* Slider Nav Buttons */
+.bdlm-shwapno-banner__nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #FFC107;
+	color: #1A2B1A;
+	border: none;
+	width: 28px;
+	height: 36px;
+	font-size: 1.4rem;
+	font-weight: 700;
+	cursor: pointer;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.15s;
+}
+
+.bdlm-shwapno-banner__nav--prev { left: 0; border-radius: 0 4px 4px 0; }
+.bdlm-shwapno-banner__nav--next { right: 0; border-radius: 4px 0 0 4px; }
+.bdlm-shwapno-banner__nav:hover { opacity: 0.9; }
+
+.bdlm-shwapno-banner__dots {
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 6px;
+}
+
+.bdlm-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.4);
+}
+
+.bdlm-dot.active {
+	background: #DF0000;
+}
+
+/* --- 3. 5 QUICK CATEGORY CARDS WITH YELLOW PILL BUTTONS --- */
+.bdlm-shwapno-quick-cats {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.85rem;
+}
+
+.bdlm-shwapno-quick-card {
+	position: relative;
+	background: #ffffff;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid #e0e6e0;
+	text-decoration: none !important;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	aspect-ratio: 1 / 1.05;
+}
+
+.bdlm-shwapno-quick-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.bdlm-shwapno-quick-card__image-wrap {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f8faf8;
+	overflow: hidden;
+}
+
+.bdlm-shwapno-quick-card__image-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.bdlm-shwapno-quick-card:hover .bdlm-shwapno-quick-card__image-wrap img {
+	transform: scale(1.06);
+}
+
+.bdlm-quick-card-emoji {
+	font-size: 3rem;
+}
+
+/* Iconic Yellow Pill Badge at Card Bottom */
+.bdlm-shwapno-quick-card__badge {
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #FFEB3B;
+	color: #1A2B1A;
+	font-size: 0.82rem;
+	font-weight: 700;
+	padding: 0.35rem 1rem;
+	border-radius: 999px;
+	white-space: nowrap;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+	transition: background 0.2s ease;
+	width: max-content;
+	max-width: 90%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bdlm-shwapno-quick-card:hover .bdlm-shwapno-quick-card__badge {
+	background: #FFD600;
+}
+
+/* --- 4. BOTTOM BENEFIT CARDS (4 COLUMNS) --- */
+.bdlm-shwapno-benefits-wrap {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	margin-top: 1.25rem;
+}
+
+.bdlm-shwapno-benefit-card {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	background: #ffffff;
+	border: 1px solid #e0e6e0;
+	border-radius: 10px;
+	padding: 0.9rem 1rem;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.bdlm-shwapno-benefit-card__icon {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+	flex-shrink: 0;
+}
+
+.bdlm-icon-red {
+	background: #ffebee;
+	color: #DF0000;
+}
+
+.bdlm-shwapno-benefit-card__text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.bdlm-shwapno-benefit-card__text strong {
+	font-size: 0.88rem;
+	font-weight: 700;
+	color: #1A2B1A;
+	line-height: 1.2;
+}
+
+.bdlm-shwapno-benefit-card__text span {
+	font-size: 0.76rem;
+	color: #6B7C6B;
+	line-height: 1.2;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+	.bdlm-shwapno-hero-main {
+		grid-template-columns: 200px 1fr;
+	}
+	.bdlm-shwapno-quick-cats {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.bdlm-shwapno-benefits-wrap {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.bdlm-shwapno-hero-main {
+		grid-template-columns: 1fr;
+	}
+	.bdlm-shwapno-sidebar {
+		display: none; /* Collapsed on mobile, bottom nav / menu icon used instead */
+	}
+	.bdlm-shwapno-quick-cats {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.bdlm-shwapno-banner__slide {
+		flex-direction: column;
+		text-align: center;
+		padding: 1.25rem;
+	}
+	.bdlm-shwapno-banner__promo-badge {
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+	.bdlm-shwapno-banner__discount-text {
+		align-items: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.bdlm-shwapno-quick-cats {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.5rem;
+	}
+	.bdlm-shwapno-benefits-wrap {
+		grid-template-columns: 1fr;
+	}
+}
+
+.bdlm-hero__floating-card span {
+	font-size: 0.75rem;
+	color: var(--bdlm-green);
+	font-weight: 600;
+}
+
+.bdlm-hero__card-icon {
+	font-size: 1.6rem;
+}
+
+.bdlm-hero__floating-card--1 {
+	top: 10%;
+	left: 0;
+	animation-delay: 0s;
+}
+
+.bdlm-hero__floating-card--2 {
+	bottom: 20%;
+	right: 0;
+	animation-delay: 2s;
+}
+
+.bdlm-hero__floating-card--3 {
+	bottom: 5%;
+	left: 15%;
+	animation-delay: 4s;
+}
+
+/* Buttons */
+.bdlm-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.7rem 1.4rem;
+	border-radius: var(--bdlm-radius-pill);
+	font-weight: 700;
+	font-size: 0.9rem;
+	text-decoration: none;
+	cursor: pointer;
+	transition: var(--bdlm-transition);
+	border: 2px solid transparent;
+}
+
+.bdlm-btn--primary {
+	background: var(--bdlm-white);
+	color: var(--bdlm-green-dark);
+}
+
+.bdlm-btn--primary:hover {
+	background: var(--bdlm-green-light);
+	color: var(--bdlm-green-dark);
+}
+
+.bdlm-btn__arrow {
+	transition: transform 0.2s ease;
+}
+
+.bdlm-btn--primary:hover .bdlm-btn__arrow {
+	transform: translateX(4px);
+}
+
+.bdlm-btn--outline {
+	background: transparent;
+	color: var(--bdlm-white);
+	border-color: rgba(255,255,255,0.5);
+}
+
+.bdlm-btn--outline:hover {
+	background: rgba(255,255,255,0.12);
+	border-color: var(--bdlm-white);
+	color: var(--bdlm-white);
+}
+
+.bdlm-btn--outline-light {
+	background: transparent;
+	color: rgba(255,255,255,0.85);
+	border-color: rgba(255,255,255,0.35);
+	padding: 0.5rem 1rem;
+	font-size: 0.85rem;
+}
+
+.bdlm-btn--outline-light:hover {
+	background: rgba(255,255,255,0.1);
+	color: var(--bdlm-white);
+}
+
+/* ==========================================================================
+   4. CATEGORY GRID
+   ========================================================================== */
+.bdlm-categories-section {
+	background: var(--bdlm-white);
+	border-radius: var(--bdlm-radius-lg);
+	padding: 1.5rem;
+	box-shadow: var(--bdlm-shadow-sm);
+}
+
+.bdlm-categories-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	gap: 0.75rem;
+}
+
+.bdlm-category-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	text-decoration: none;
+	padding: 1rem 0.5rem;
+	border-radius: var(--bdlm-radius);
+	border: 1.5px solid var(--bdlm-border);
+	background: var(--bdlm-bg);
+	transition: var(--bdlm-transition);
+	gap: 0.5rem;
+}
+
+.bdlm-category-tile:hover {
+	border-color: var(--bdlm-green);
+	background: var(--bdlm-green-light);
+	transform: translateY(-3px);
+	box-shadow: var(--bdlm-shadow-md);
+}
+
+.bdlm-category-tile__image-wrap {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--bdlm-white);
+	overflow: hidden;
+	box-shadow: var(--bdlm-shadow-sm);
+}
+
+.bdlm-category-tile__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bdlm-category-tile__emoji {
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.bdlm-category-tile__name {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--bdlm-text);
+	line-height: 1.3;
+}
+
+.bdlm-category-tile__count {
+	font-size: 0.7rem;
+	color: var(--bdlm-muted);
+}
+
+/* ==========================================================================
+   5. PRODUCT CARD ENHANCEMENTS
+   ========================================================================== */
+
+/* Position the card inner for absolute badge positioning */
+.woocommerce ul.products li.product .bdlm-card-inner {
+	position: relative;
+}
+
+/* Savings badge */
+.bdlm-savings-badge {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	background: var(--bdlm-red);
+	color: var(--bdlm-white);
+	font-size: 0.72rem;
+	font-weight: 700;
+	padding: 3px 8px;
+	border-radius: var(--bdlm-radius-pill);
+	z-index: 3;
+	letter-spacing: 0.03em;
+	line-height: 1.4;
+}
+
+/* Delivery badge */
+.bdlm-delivery-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	background: var(--bdlm-green-light);
+	color: var(--bdlm-green-dark);
+	font-size: 0.7rem;
+	font-weight: 600;
+	padding: 3px 8px;
+	border-radius: var(--bdlm-radius-pill);
+	margin-top: 0.4rem;
+}
+
+.bdlm-delivery-icon {
+	font-size: 0.8rem;
+}
+
+/* Unit info below product title */
+.bdlm-unit-info {
+	display: block;
+	font-size: 0.78rem;
+	color: var(--bdlm-muted);
+	margin-bottom: 0.25rem;
+	margin-top: -0.4rem;
+	font-weight: 500;
+}
+
+/* ==========================================================================
+   6. PRODUCT SCROLL ROW
+   ========================================================================== */
+.bdlm-products-scroll-wrap {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: thin;
+	scrollbar-color: var(--bdlm-border) transparent;
+	padding-bottom: 0.5rem;
+}
+
+.bdlm-products-scroll-wrap::-webkit-scrollbar {
+	height: 4px;
+}
+
+.bdlm-products-scroll-wrap::-webkit-scrollbar-thumb {
+	background: var(--bdlm-border);
+	border-radius: 4px;
+}
+
+.bdlm-products-scroll-wrap .products {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: 0.85rem;
+	width: max-content;
+}
+
+.bdlm-products-scroll-wrap .products li.product {
+	flex: 0 0 200px !important;
+	width: 200px !important;
+	scroll-snap-align: start;
+	float: none !important;
+	margin: 0 !important;
+}
+
+/* ==========================================================================
+   7. FLASH DEALS & COUNTDOWN
+   ========================================================================== */
+.bdlm-deals-section {
+	background: linear-gradient(135deg, #0F1B0F 0%, #1A2E1A 50%, #0F2A18 100%);
+	border-radius: var(--bdlm-radius-lg);
+	padding: 1.75rem 1.5rem;
+	margin: 2.5rem 0;
+}
+
+.bdlm-deals-header {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.bdlm-deals-header__left {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex: 1;
+}
+
+.bdlm-deals-fire {
+	font-size: 1.6rem;
+	animation: bdlm-fire-pulse 1.5s ease-in-out infinite;
+}
+
+/* Countdown */
+.bdlm-countdown {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	background: rgba(255,255,255,0.08);
+	padding: 0.6rem 1rem;
+	border-radius: var(--bdlm-radius);
+	backdrop-filter: blur(4px);
+	border: 1px solid rgba(255,255,255,0.1);
+}
+
+.bdlm-countdown__label {
+	font-size: 0.75rem;
+	color: rgba(255,255,255,0.65);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	white-space: nowrap;
+}
+
+.bdlm-countdown__display {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.bdlm-countdown__unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 40px;
+}
+
+.bdlm-countdown__value {
+	font-size: 1.5rem;
+	font-weight: 800;
+	color: var(--bdlm-gold);
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+	font-family: 'Inter', monospace;
+}
+
+.bdlm-countdown__unit-label {
+	font-size: 0.6rem;
+	color: rgba(255,255,255,0.5);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-top: 2px;
+}
+
+.bdlm-countdown__sep {
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: var(--bdlm-gold);
+	margin-bottom: 8px;
+	opacity: 0.7;
+}
+
+/* Deals product cards on dark background */
+.bdlm-deals-section .bdlm-products-scroll-wrap {
+	scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+/* ==========================================================================
+   8. LIVE SEARCH & SEARCH BAR SHORTCODE ([bd_search])
+   ========================================================================== */
+.bdlm-search-bar-wrap {
+	width: 100%;
+	max-width: 680px;
+	margin: 0 auto;
+}
+
+.bdlm-search-form {
+	display: flex;
+	align-items: center;
+	gap: 0;
+	background: #ffffff;
+	border: 2px solid var(--bdlm-green);
+	border-radius: var(--bdlm-radius-pill);
+	padding: 3px 3px 3px 1rem;
+	box-shadow: 0 4px 14px rgba(0, 166, 81, 0.12);
+	transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.bdlm-search-form:focus-within {
+	box-shadow: 0 6px 20px rgba(0, 166, 81, 0.22);
+	border-color: var(--bdlm-green-dark);
+}
+
+.bdlm-search-input-wrap {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex: 1;
+}
+
+.bdlm-search-icon {
+	font-size: 1.1rem;
+	color: var(--bdlm-green);
+	flex-shrink: 0;
+}
+
+.bdlm-search-input {
+	width: 100%;
+	border: none !important;
+	background: transparent !important;
+	outline: none !important;
+	box-shadow: none !important;
+	padding: 0.45rem 0 !important;
+	font-size: 0.95rem;
+	color: var(--bdlm-text);
+	font-weight: 500;
+}
+
+.bdlm-search-input::placeholder {
+	color: var(--bdlm-text-muted);
+	font-weight: 400;
+}
+
+.bdlm-search-submit {
+	background: var(--bdlm-green) !important;
+	color: #ffffff !important;
+	border: none !important;
+	border-radius: var(--bdlm-radius-pill) !important;
+	padding: 0.55rem 1.4rem !important;
+	font-size: 0.9rem !important;
+	font-weight: 700 !important;
+	cursor: pointer;
+	transition: background 0.15s ease;
+	white-space: nowrap;
+}
+
+.bdlm-search-submit:hover {
+	background: var(--bdlm-green-dark) !important;
+}
+
+.bdlm-search-dropdown {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 600px;
+	background: var(--bdlm-white);
+	border-radius: 0 0 var(--bdlm-radius-lg) var(--bdlm-radius-lg);
+	box-shadow: var(--bdlm-shadow-lg);
+	z-index: 99999;
+	border: 1px solid var(--bdlm-border);
+	border-top: 3px solid var(--bdlm-green);
+	overflow: hidden;
+	animation: bdlm-slide-down 0.2s ease;
+}
+
+.bdlm-search-dropdown[hidden] {
+	display: none;
+}
+
+.bdlm-search-results {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.bdlm-search-item {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	padding: 0.75rem 1rem;
+	text-decoration: none;
+	color: var(--bdlm-text);
+	border-bottom: 1px solid var(--bdlm-border);
+	transition: background 0.15s ease;
+	cursor: pointer;
+}
+
+.bdlm-search-item:last-child {
+	border-bottom: none;
+}
+
+.bdlm-search-item:hover,
+.bdlm-search-item.bdlm-search-item--active {
+	background: var(--bdlm-green-light);
+}
+
+.bdlm-search-item__thumb {
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
+	border-radius: var(--bdlm-radius-sm);
+	flex-shrink: 0;
+	border: 1px solid var(--bdlm-border);
+}
+
+.bdlm-search-item__info {
+	flex: 1;
+	min-width: 0;
+}
+
+.bdlm-search-item__title {
+	font-weight: 600;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--bdlm-text);
+}
+
+.bdlm-search-item__cat {
+	font-size: 0.72rem;
+	color: var(--bdlm-muted);
+	margin-top: 1px;
+}
+
+.bdlm-search-item__price {
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: var(--bdlm-green-dark);
+	white-space: nowrap;
+}
+
+.bdlm-search-item__sale-badge {
+	font-size: 0.65rem;
+	background: var(--bdlm-red);
+	color: white;
+	padding: 1px 5px;
+	border-radius: 3px;
+	font-weight: 700;
+	margin-left: 0.25rem;
+}
+
+.bdlm-search-loading,
+.bdlm-search-empty {
+	padding: 1.25rem;
+	text-align: center;
+	color: var(--bdlm-muted);
+	font-size: 0.875rem;
+}
+
+.bdlm-search-view-all {
+	display: block;
+	padding: 0.75rem 1rem;
+	text-align: center;
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: var(--bdlm-green);
+	text-decoration: none;
+	background: var(--bdlm-bg);
+	border-top: 1px solid var(--bdlm-border);
+}
+
+.bdlm-search-view-all:hover {
+	background: var(--bdlm-green-light);
+	color: var(--bdlm-green-dark);
+}
+
+/* ==========================================================================
+   9. GUEST CHECKOUT NOTICE & FIELDS
+   ========================================================================== */
+.bdlm-guest-notice {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.85rem;
+	background: var(--bdlm-green-light);
+	border: 1.5px solid var(--bdlm-green);
+	border-radius: var(--bdlm-radius);
+	padding: 1rem 1.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.bdlm-guest-notice__icon {
+	font-size: 1.4rem;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.bdlm-guest-notice__text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.bdlm-guest-notice__text strong {
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: var(--bdlm-green-dark);
+}
+
+.bdlm-guest-notice__text span {
+	font-size: 0.85rem;
+	color: var(--bdlm-muted);
+}
+
+.bdlm-hidden-field {
+	display: none !important;
+}
+
+/* ==========================================================================
+   10. CATEGORY ARCHIVE ENHANCEMENTS
+   ========================================================================== */
+.bdlm-subcategory-nav {
+	margin-bottom: 1.25rem;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+
+.bdlm-subcategory-nav::-webkit-scrollbar {
+	display: none;
+}
+
+.bdlm-subcategory-chips {
+	display: flex;
+	gap: 0.6rem;
+	flex-wrap: nowrap;
+	width: max-content;
+}
+
+.bdlm-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.4rem 0.9rem;
+	border-radius: var(--bdlm-radius-pill);
+	border: 1.5px solid var(--bdlm-border);
+	background: var(--bdlm-white);
+	text-decoration: none;
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: var(--bdlm-text);
+	white-space: nowrap;
+	transition: var(--bdlm-transition);
+}
+
+.bdlm-chip-img {
+	width: 24px;
+	height: 24px;
+	object-fit: cover;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.bdlm-chip:hover {
+	border-color: var(--bdlm-green);
+	color: var(--bdlm-green-dark);
+	background: var(--bdlm-green-light);
+}
+
+.bdlm-chip--active {
+	background: var(--bdlm-green);
+	border-color: var(--bdlm-green);
+	color: var(--bdlm-white);
+}
+
+.bdlm-chip--active:hover {
+	background: var(--bdlm-green-dark);
+	color: var(--bdlm-white);
+}
+
+.bdlm-chip-count {
+	opacity: 0.7;
+	font-weight: 400;
+	font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   CATEGORY MENU ACCORDION ([bd_category_menu])
+   ========================================================================== */
+.bdlm-category-menu {
+	background: #ffffff;
+	border: 1.5px solid var(--bdlm-border);
+	border-radius: var(--bdlm-radius);
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	box-shadow: var(--bdlm-shadow);
+}
+
+.bdlm-category-menu__header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0 0 0.85rem;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--bdlm-text);
+	border-bottom: 2px solid var(--bdlm-green);
+	padding-bottom: 0.5rem;
+}
+
+.bdlm-cat-level {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bdlm-cat-level-2 {
+	padding-left: 1.25rem;
+	margin-top: 0.25rem;
+	border-left: 2px solid var(--bdlm-green-light);
+}
+
+.bdlm-cat-level-3 {
+	padding-left: 1rem;
+	margin-top: 0.2rem;
+	border-left: 2px solid #e0f2e8;
+}
+
+.bdlm-cat-item {
+	margin-bottom: 0.35rem;
+}
+
+.bdlm-cat-summary,
+.bdlm-cat-row {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.35rem 0.5rem;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background 0.15s ease;
+	user-select: none;
+	font-size: 0.88rem;
+}
+
+.bdlm-cat-summary::-webkit-details-marker {
+	display: none;
+}
+
+.bdlm-cat-summary::after {
+	content: '▸';
+	margin-left: auto;
+	font-size: 0.75rem;
+	color: var(--bdlm-text-muted);
+	transition: transform 0.2s ease;
+}
+
+details[open] > .bdlm-cat-summary::after {
+	transform: rotate(90deg);
+}
+
+.bdlm-cat-summary:hover,
+.bdlm-cat-row:hover {
+	background: var(--bdlm-green-light);
+}
+
+.bdlm-cat-icon {
+	width: 20px;
+	height: 20px;
+	object-fit: cover;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.bdlm-cat-link {
+	text-decoration: none;
+	color: var(--bdlm-text);
+	font-weight: 600;
+	flex: 1;
+}
+
+.bdlm-cat-link:hover {
+	color: var(--bdlm-green-dark);
+}
+
+.bdlm-cat-item--active > .bdlm-cat-row,
+.bdlm-cat-item--active > details > .bdlm-cat-summary {
+	background: var(--bdlm-green-light);
+}
+
+.bdlm-cat-item--active > .bdlm-cat-row .bdlm-cat-link,
+.bdlm-cat-item--active > details > .bdlm-cat-summary .bdlm-cat-link {
+	color: var(--bdlm-green-dark);
+	font-weight: 700;
+}
+
+.bdlm-cat-count {
+	font-size: 0.75rem;
+	color: var(--bdlm-text-muted);
+	font-weight: 400;
+}
+
+.bdlm-category-banner {
+	background: var(--bdlm-bg);
+	border-left: 4px solid var(--bdlm-green);
+	border-radius: 0 var(--bdlm-radius) var(--bdlm-radius) 0;
+	padding: 0.75rem 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.bdlm-category-description {
+	margin: 0;
+	font-size: 0.875rem;
+	color: var(--bdlm-muted);
+	line-height: 1.6;
+}
+
+/* ==========================================================================
+   11. MOBILE BOTTOM NAVIGATION
+   ========================================================================== */
+.bdlm-mobile-nav {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.bdlm-mobile-nav {
+		display: flex;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 60px;
+		background: var(--bdlm-white);
+		box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
+		z-index: 9998;
+		border-top: 1px solid var(--bdlm-border);
+	}
+
+	.bdlm-mobile-nav__item {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		color: var(--bdlm-muted);
+		font-size: 0.65rem;
+		font-weight: 600;
+		gap: 2px;
+		transition: color 0.2s ease;
+		position: relative;
+	}
+
+	.bdlm-mobile-nav__item:hover,
+	.bdlm-mobile-nav__item.active {
+		color: var(--bdlm-green);
+	}
+
+	.bdlm-mobile-nav__icon {
+		font-size: 1.2rem;
+		line-height: 1;
+	}
+
+	.bdlm-mobile-nav__cart-badge {
+		position: absolute;
+		top: 5px;
+		right: calc(50% - 18px);
+		background: var(--bdlm-red);
+		color: white;
+		font-size: 0.6rem;
+		font-weight: 700;
+		min-width: 16px;
+		height: 16px;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 3px;
+	}
+
+	/* Push WC footer up to avoid overlap */
+	.site-footer,
+	footer.entry-footer {
+		padding-bottom: 70px !important;
+	}
+
+	body {
+		padding-bottom: 60px;
+	}
+}
+
+/* ==========================================================================
+   12. BRANDS STRIP
+   ========================================================================== */
+.bdlm-brands-section {
+	background: var(--bdlm-white);
+	border-radius: var(--bdlm-radius-lg);
+	padding: 1.5rem;
+	box-shadow: var(--bdlm-shadow-sm);
+}
+
+.bdlm-brands-strip {
+	display: flex;
+	gap: 0.85rem;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	padding-bottom: 0.25rem;
+}
+
+.bdlm-brands-strip::-webkit-scrollbar {
+	display: none;
+}
+
+.bdlm-brand-chip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	text-decoration: none;
+	flex: 0 0 80px;
+	padding: 0.75rem 0.5rem;
+	border-radius: var(--bdlm-radius);
+	border: 1.5px solid var(--bdlm-border);
+	background: var(--bdlm-bg);
+	transition: var(--bdlm-transition);
+}
+
+.bdlm-brand-chip:hover {
+	border-color: var(--bdlm-green);
+	background: var(--bdlm-green-light);
+	transform: translateY(-2px);
+}
+
+.bdlm-brand-chip img {
+	width: 44px;
+	height: 44px;
+	object-fit: contain;
+	border-radius: 50%;
+	background: white;
+}
+
+.bdlm-brand-chip span {
+	font-size: 0.72rem;
+	font-weight: 600;
+	color: var(--bdlm-text);
+	text-align: center;
+	line-height: 1.3;
+}
+
+/* ==========================================================================
+   13. UTILITY & ANIMATIONS
+   ========================================================================== */
+@keyframes bdlm-pulse {
+	0%, 100% { transform: scale(1); opacity: 0.6; }
+	50%       { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes bdlm-float {
+	0%, 100% { transform: translateY(0); }
+	50%       { transform: translateY(-8px); }
+}
+
+@keyframes bdlm-fire-pulse {
+	0%, 100% { transform: scale(1); }
+	50%       { transform: scale(1.15) rotate(5deg); }
+}
+
+@keyframes bdlm-slide-down {
+	from { opacity: 0; transform: translateY(-8px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bdlm-fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+/* Scroll-revealed sections */
+.bdlm-section {
+	animation: bdlm-fade-in 0.5s ease both;
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media (max-width: 768px) {
+	.bdlm-hero__inner {
+		grid-template-columns: 1fr;
+	}
+
+	.bdlm-hero__visual {
+		display: none;
+	}
+
+	.bdlm-hero {
+		padding: 2rem 1.25rem;
+	}
+
+	.bdlm-categories-grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.6rem;
+	}
+
+	.bdlm-deals-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.85rem;
+	}
+
+	.bdlm-countdown {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 480px) {
+	.bdlm-categories-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.bdlm-hero__title {
+		font-size: 1.5rem;
+	}
+
+	.bdlm-hero__actions {
+		flex-direction: column;
+	}
+
+	.bdlm-hero__actions .bdlm-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.bdlm-products-scroll-wrap .products li.product {
+		flex: 0 0 160px !important;
+		width: 160px !important;
+	}
+}
+
+/* ==========================================================================
+   12. FREE SHIPPING BAR
+   ========================================================================== */
+.bdlm-free-shipping-bar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	background: var(--bdlm-green-light);
+	color: var(--bdlm-green-dark);
+	border: 1px solid rgba(0, 166, 81, 0.25);
+	border-radius: var(--bdlm-radius);
+	padding: 0.65rem 1.25rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-bottom: 1.25rem;
+	animation: bdlm-fade-in 0.4s ease;
+}
+
+.bdlm-free-shipping-bar__icon {
+	font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   13. BADGE STYLE VARIANTS
+   Body classes: bdlm-badge-style--pill | --square | --ribbon
+   ========================================================================== */
+
+/* Pill (default — already in base styles) */
+.bdlm-badge-style--pill .bdlm-savings-badge,
+.bdlm-badge-style--pill .bdlm-delivery-badge {
+	border-radius: var(--bdlm-radius-pill);
+}
+
+/* Square */
+.bdlm-badge-style--square .bdlm-savings-badge,
+.bdlm-badge-style--square .bdlm-delivery-badge {
+	border-radius: 3px;
+}
+
+/* Ribbon — diagonal top-left corner effect */
+.bdlm-badge-style--ribbon .bdlm-savings-badge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 0 0 var(--bdlm-radius) 0;
+	padding: 5px 10px 5px 8px;
+	font-size: 0.7rem;
+	clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+
+/* ==========================================================================
+   14. PROMO BANNER & BENEFIT CARDS ([bd_promo_banner])
+   ========================================================================== */
+.bdlm-promo-banner {
+	margin: 1.5rem 0 2rem;
+}
+
+.bdlm-promo-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+}
+
+.bdlm-promo-card {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	background: #ffffff;
+	border: 1.5px solid #e8ede8;
+	border-radius: var(--bdlm-radius);
+	padding: 1rem 1.1rem;
+	box-shadow: var(--bdlm-shadow);
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.bdlm-promo-card:hover {
+	transform: translateY(-2px);
+	border-color: var(--bdlm-green);
+}
+
+.bdlm-promo-card__icon {
+	font-size: 1.8rem;
+	line-height: 1;
+	flex-shrink: 0;
+	background: var(--bdlm-green-light);
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bdlm-promo-card__content {
+	flex: 1;
+}
+
+.bdlm-promo-card__title {
+	margin: 0 0 2px;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--bdlm-text);
+	line-height: 1.25;
+}
+
+.bdlm-promo-card__desc {
+	margin: 0;
+	font-size: 0.78rem;
+	color: var(--bdlm-text-muted);
+	line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+	.bdlm-promo-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 500px) {
+	.bdlm-promo-grid {
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+	}
+}
